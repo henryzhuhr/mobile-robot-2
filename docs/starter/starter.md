@@ -57,6 +57,18 @@ docker compose up -d
 docker compose down
 ```
 
+### VSCode 中的 ROS2 插件
+
+依赖于插件 [Robot Developer Extensions for ROS 2](https://marketplace.visualstudio.com/items?itemName=Ranch-Hand-Robotics.rde-ros-2)
+
+这个插件包含了一些命令：
+
+- 通过命令面板查找并执行 `ROS2: Start` 可以启动 ROS2 的守护进程，在状态栏中可以看到 `✓ROS2.jazzy` 的字样，点击后可以看到 `ROS2 System Status` 处于 `online` 的状态
+
+- 如果新增了 ROS2 的包，可以通过 `ROS2: Update Python Path` 或者 `ROS2: Update C++ Properties` 自动更新 `.vscode/settings.json` 文件中的配置
+
+更多命令参考：[Commands](https://ranchhandrobotics.com/rde-ros-2/usage.html)
+
 ### 图形界面
 
 利用 X11 实现图形界面显示
