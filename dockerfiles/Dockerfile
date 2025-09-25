@@ -24,7 +24,7 @@ ARG OPTION_INSTALL_LIST="$OPTION_INSTALL_LIST openssh-client"
 ARG OPTION_INSTALL_LIST="$OPTION_INSTALL_LIST build-essential"
 ARG OPTION_INSTALL_LIST="$OPTION_INSTALL_LIST cmake ninja-build clang clangd"
 # ARG OPTION_INSTALL_LIST="$OPTION_INSTALL_LIST ros-jazzy-perception=0.11.0-1*"
-# ARG OPTION_INSTALL_LIST="$OPTION_INSTALL_LIST ros-jazzy-desktop-full"
+ARG OPTION_INSTALL_LIST="$OPTION_INSTALL_LIST ros-jazzy-desktop-full"
 ARG OPTION_INSTALL_LIST="$OPTION_INSTALL_LIST x11-xserver-utils x11-apps net-tools"
 # ARG OPTION_INSTALL_LIST="$OPTION_INSTALL_LIST libxcb-keysyms1-dev libxcb-image0-dev \
 #     libxcb-shm0-dev libxcb-icccm4-dev libxcb-sync0-dev libxcb-xfixes0-dev \
@@ -133,7 +133,6 @@ COPY --from=uv-builder /uv /uvx /bin/
 ENV UV_SYSTEM=true
 
 ENV UV_DEFAULT_INDEX="https://mirrors.cloud.tencent.com/pypi/simple/"
-# ENV UV_INDEX="https://mirrors.ustc.edu.cn/pypi/simple"
 ENV UV_PYTHON_PREFERENCE="system"
 RUN set -x && \
     rm -rf $(uv cache dir) && \

@@ -4,6 +4,10 @@ outline: deep
 
 # ROS2 示例
 
+## demo
+
+> `demo` 目录下包含了一些 ROS2 的示例代码，可以参考下面的步骤进行编译和运行
+
 ### 编写发布和订阅包 (Python)
 
 创建名为 `pubsub_py` 的包
@@ -41,14 +45,14 @@ colcon build --packages-select pubsub_py --symlink-install
 打开一个终端激活环境，并运行订阅者
 
 ```bash
-. install/setup.zsh
+. install/setup.sh
 ros2 run pubsub_py subscriber
 ```
 
 打开另外一个新终端激活环境，并运行发布者
 
 ```bash
-. install/setup.zsh
+. install/setup.sh
 ros2 run pubsub_py publisher
 ```
 
@@ -56,7 +60,7 @@ ros2 run pubsub_py publisher
 
 创建名为 `pubsub` 的包，使用 `ament_cmake` 构建类型
 
-```shell
+```bash
 cd src
 ros2 pkg create --build-type ament_cmake pubsub
 ```
@@ -176,6 +180,6 @@ setup(
 
 ```bash
 colcon build --packages-select py_launch_demo --symlink-install
-. install/setup.bash
+. install/setup.sh
 ros2 launch py_launch_demo _launch.py
 ```

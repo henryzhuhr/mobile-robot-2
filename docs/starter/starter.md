@@ -23,16 +23,7 @@ bash scripts/get-ros-key.sh
 # zsh scripts/get-ros-key.sh # for zsh(macOS)
 ```
 
-在项目的 `dockerfiles/Dockerfile` 中，会执行 `COPY ./.cache/ros.key /usr/share/keyrings/ros-archive-keyring.gpg`
-
-> [!TIP]
-> 在编译镜像、启动容器前建议先拉取下面的镜像（可能需要全局代理）
->
-> ```bash
-> docker pull ros:jazzy-ros-base-noble
-> ```
->
-> 随后，（亲测）需要关掉代理，在没有代理的情况下编译镜像。这是由于 Dockerfile 中使用了 TUNA 源获取 apt 软件包，而科学上网的环境可能导致容器内无法访问 TUNA 源。编译完镜像并容器成功启动后，就可以继续使用科学上网了
+> 在项目的 `dockerfiles/Dockerfile` 中，会执行 `COPY ./.cache/ros.key /usr/share/keyrings/ros-archive-keyring.gpg`
 
 在左下角远程开发的图标中，启动容器（首次启动容器会先编译镜像，这个过程可以认为是安装操作系统和软件）
 
@@ -128,4 +119,4 @@ ros2 run rviz2 rviz2
 ```
 
 > [!WARNING]
-> 如果您正在使用 macOS，并通过容器的方式启动 rviz2 ，那么可能无法启动成功，这似乎是与 OpenGL 的版本有关，参考[Impossible to run Rviz2 from a Docker container on Apple Silicon #929](https://github.com/ros2/rviz/issues/929)，如果您有好的办法可以解决这个问题，欢迎提 [issue](https://github.com/henryzhuhr/toy-ros/issues) 或者 [PR](https://github.com/henryzhuhr/toy-ros/pulls)
+> 如果您正在使用 macOS，并通过容器的方式启动 rviz2 ，那么可能无法启动成功，这似乎是与 OpenGL 的版本有关，参考 [*Impossible to run Rviz2 from a Docker container on Apple Silicon #929*](https://github.com/ros2/rviz/issues/929)，如果您有好的办法可以解决这个问题，欢迎提 [issue](https://github.com/henryzhuhr/toy-ros/issues) 或者 [PR](https://github.com/henryzhuhr/toy-ros/pulls)

@@ -3,7 +3,7 @@
 
 
 UV_VERSION=0.8.19
-MIRRORS_URL=mirrors.ustc.edu.cn
+MIRRORS_URL="mirrors.cloud.tencent.com"
 CLEAN_APT_CACHE=0
 
 if [ ! -f ".cache/ros.key" ]; then
