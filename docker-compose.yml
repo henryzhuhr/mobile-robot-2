@@ -1,10 +1,17 @@
 # https://docs.docker.com/reference/compose-file/services/
 services:
   mobile-robot:
-    image: mobile-robot:latest
-    # build: # recommended to use `scripts/docker-pre-build.sh` to build the image
+    container_name: mobile-robot
+    image: mobile-robot:1.0.0
+
+    ## recommended to use `scripts/docker-pre-build.sh` to build the image
+    # build: 
     #   context: .
     #   dockerfile: dockerfiles/Dockerfile
+    #   args:
+    #     - UV_VERSION=0.8.19
+    #     - MIRRORS_URL=mirrors.cloud.tencent.com
+    #     - CLEAN_APT_CACHE=0  # 设置为1可以减小镜像体积，但会增加构建时间
 
     restart: unless-stopped
     environment:  # 设置环境变量
@@ -25,15 +32,13 @@ services:
     working_dir: /root/mobile-robot
     network_mode: "host"  # 使用主机网络模式
     # platform: linux/arm64/v8
-    # -- 端口映射
-    ports:          
-      - "8080:8080" 
-      - "22:22"
+  
     # runtime: nvidia  # 使用 nvidia-docker
     # deploy:
     #   resources:
     #     reservations:
     #       devices:
     #         - capabilities: [gpu]
+    
     # sleep infinity 用于保持容器运行，否则 vscode 无法进入容器
     command: ["sleep", 'infinity']

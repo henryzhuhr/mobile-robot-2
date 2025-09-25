@@ -1,4 +1,7 @@
-mkdir -p .cache
+#!/bin/bash
+
+[ ! -d .cache ] && mkdir -p .cache
+
 if [ -f .cache/ros.key ]; then
     echo "ros key already exists, skip"
     exit 0

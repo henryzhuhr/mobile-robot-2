@@ -10,6 +10,7 @@
         "spaces_per_tab": 4
     },
     "MD013": false,
+    "MD029": false,
     "MD033": {
         // 允许使用的 HTML 标签
         "allowed_elements": [

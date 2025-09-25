@@ -1,14 +1,16 @@
+#!/bin/bash
+
 package_group=${1:-"my_group"}
 package_name=${2:-"my_package"}
 
 package_dir=$(pwd)/modules/${package_group}
-if [ ! -d $package_dir ]; then
-    mkdir -p $package_dir
+if [ ! -d "$package_dir" ]; then
+    mkdir -p "$package_dir"
 fi
 
 echo "create package '${package_name}' in ${package_dir}"
 
-cd $package_dir
+cd "$package_dir" || exit
 
 ros2 pkg create "${package_name}" \
     --license Apache-2.0 \

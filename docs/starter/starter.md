@@ -14,18 +14,24 @@ outline: deep
 
 项目可以直接从 **VSCode** 启动 ROS2 (Jazzy) 的容器，在这之前，需要做以下准备：
 
-1. 获取 ROS2 的公钥环文件
-
-执行以下命令
+1. 执行以下命令获取 ROS2 的公钥环文件
 
 ```bash
-bash scripts/get-ros-key.sh 
-# zsh scripts/get-ros-key.sh # for zsh(macOS)
+bash scripts/download-ros-key.sh
+# zsh scripts/download-ros-key.sh # for zsh(macOS)
 ```
 
 > 在项目的 `dockerfiles/Dockerfile` 中，会执行 `COPY ./.cache/ros.key /usr/share/keyrings/ros-archive-keyring.gpg`
 
-在左下角远程开发的图标中，启动容器（首次启动容器会先编译镜像，这个过程可以认为是安装操作系统和软件）
+2. 为了加快 `docker compose up` 的速度，我们预先构建好镜像
+
+```bash
+bash scripts/docker-pre-build.sh
+```
+
+> 在 `docker-compose.yml` 中，已经注释了 `build: .` 这一行，如果不预先构建镜像，可以取消注释，这将会在 `docker compose up` 时编译镜像
+
+3. 在 VSCode 左下角远程开发的图标中，启动容器（首次启动容器会先编译镜像，这个过程可以认为是安装操作系统和软件）
 
 ![vscode](./images/start-container-in-vscode.png)
 
@@ -39,7 +45,21 @@ bash scripts/get-ros-key.sh
 
 ![docker-desktop](./images/docker-desktop-running-container.png)
 
+4. 如果你不需要在 VSCode 中运行容器，也可以直接在终端中运行容器
+
+```bash
+docker compose up -d
+```
+
+5. 如果需要停止容器
+
+```bash
+docker compose down
+```
+
 ### 图形界面
+
+利用 X11 实现图形界面显示
 
 #### macOS
 
@@ -85,6 +105,10 @@ services:
       - DISPLAY=host.docker.internal:0
 ```
 
+#### X11 with SSH
+
+> TODO
+
 ### 启动 ROS demo
 
 在终端中启动 ROS2 的小乌龟demo
@@ -110,7 +134,7 @@ ros2 run turtlesim turtle_teleop_key
 
 ### 启动 Rviz2
 
-在终端中启动 Rviz2
+需要在支持 X11 的环境下启动 Rviz2
 
 ```bash
 ros2 run rviz2 rviz2

@@ -1,6 +1,7 @@
 #!/bin/bash
 # 预先构建项目镜像的脚本，加快 docker compose up 的速度
 
+IMAGE_TAG="1.0.0"
 
 UV_VERSION=0.8.19
 MIRRORS_URL="mirrors.cloud.tencent.com"
@@ -32,7 +33,7 @@ for IMAGE in "${IMAGES[@]}"; do
   fi
 done
 
-docker build -t mobile-robot:latest -f dockerfiles/Dockerfile \
+docker build -t mobile-robot:${IMAGE_TAG} -f dockerfiles/Dockerfile \
   --build-arg UV_VERSION=${UV_VERSION} \
   --build-arg MIRRORS_URL=${MIRRORS_URL} \
   --build-arg CLEAN_APT_CACHE=${CLEAN_APT_CACHE} \

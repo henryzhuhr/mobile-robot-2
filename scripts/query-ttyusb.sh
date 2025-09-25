@@ -1,3 +1,5 @@
+#!/bin/bash
+
 source scripts/constant.sh
 
 USER_DEVICE=" "
